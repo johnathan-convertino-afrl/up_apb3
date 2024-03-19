@@ -1,0 +1,31 @@
+CAPI=2:
+
+name: AFRL:bus:up_apb3:1.0.0
+description: APB3 slave to Analog Devices uP interface
+
+filesets:
+  src:
+    files:
+      - src/up_apb3.v
+    file_type: verilogSource
+  
+  tb:
+    files:
+      - tb/tb_apb3.v
+    file_type: verilogSource
+    
+  dep:
+    depend:
+      - AFRL:utility:helper:1.0.0
+    
+targets:
+  default: &default
+    description: Default for IP intergration.
+    filesets: [src, dep]
+  
+  sim: &sim
+    <<: *default
+    description: Base simulation using icarus as default.
+    default_tool: icarus
+    filesets_append: [tb]
+    toplevel: tb_apb3
