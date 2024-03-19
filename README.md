@@ -1,12 +1,12 @@
-# WISHBONE CLASSIC SLAVE
-### Wishbone slave to Analog Devices uP interface
+# APB3 SLAVE
+### APB3 slave to Analog Devices uP interface
 ---
 
    author: Jay Convertino   
    
-   date: 2024.02.19
+   date: 2024.03.19
    
-   details: Interface analog devices uP interface devices to Wishbone Classic bus
+   details: Interface analog devices uP interface devices to APB3 bus
    
    license: MIT   
    
@@ -35,12 +35,12 @@
 ### COMPONENTS
 #### SRC
 
-* wishbone_slave.v
+* up_apb3.v
 
   
 #### TB
 
-* tb_wishbone_slave.v
+* tb_apb3.v
   
 ### fusesoc
 
