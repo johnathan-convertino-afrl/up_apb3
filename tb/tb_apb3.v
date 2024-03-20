@@ -54,6 +54,7 @@ module tb_apb3 ();
   wire        tb_apb_pready;
   wire [31:0] tb_apb_prdata;
   wire        tb_rack;
+  wire        tb_wack;
 
   wire        tb_uart_loop;
 
@@ -99,7 +100,7 @@ module tb_apb3 ();
     .up_rdata(r_up_rdata),
     //write interface
     .up_wreq(up_wreq),
-    .up_wack(r_up_wack),
+    .up_wack(tb_wack),
     .up_waddr(up_waddr),
     .up_wdata(up_wdata)
   );
@@ -140,7 +141,7 @@ module tb_apb3 ();
       r_apb_pwdata  <= 'hAAAADEAD;
       r_apb_paddr   <= 0;
     end else begin
-      r_apb_pwrite  <= 1'b1;
+      r_apb_pwrite  <= 1'b0;
       r_apb_penable <= 1'b0;
       r_apb_psel    <= 1;
 
@@ -160,6 +161,7 @@ module tb_apb3 ();
   end
 
   assign tb_rack = r_up_rack & up_rreq;
+  assign tb_wack = r_up_wack & up_wreq;
 
   //up registers decoder
   always @(posedge tb_data_clk)
