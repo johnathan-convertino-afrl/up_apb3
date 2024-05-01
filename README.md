@@ -28,7 +28,7 @@
 
 ### IP USAGE
 #### INSTRUCTIONS
-This core is made to interface APB3 devices to uP based bus cores. This is part of a family of converters based on Analog Devices uP specification. Using this allows usage of Analog Devices AXI Lite core, AFRL APB3, AFRL Wishbone Classic, and AFRL Wishbone Pipeline converters. Meaning any uP core can be easily customized to any bus quickly. These are made for relativly slow speed bus device interfaces.
+This core is made to interface APB3 bus to uP based device cores. This is part of a family of converters based on Analog Devices uP specification. Using this allows usage of Analog Devices AXI Lite core, AFRL APB3, AFRL Wishbone Classic, and AFRL Wishbone Pipeline converters. Meaning any uP core can be easily customized to any bus quickly. These are made for relativly slow speed bus device interfaces.
 
 #### uP example
 
