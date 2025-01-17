@@ -69,25 +69,27 @@ module up_apb3 #(
     parameter BUS_WIDTH     = 4
   ) 
   (
-    input                       clk,
-    input                       rst,
-    input  [ADDRESS_WIDTH-1:0]  s_apb_paddr,
-    input  [0:0]                s_apb_psel,
-    input                       s_apb_penable,
-    output                      s_apb_pready,
-    input                       s_apb_pwrite,
-    input  [BUS_WIDTH*8-1:0]    s_apb_pwdata,
-    output [BUS_WIDTH*8-1:0]    s_apb_prdata,
-    output                      s_apb_pslverror,
-    output                      up_rreq,
-    input                       up_rack,
-    output  [ADDRESS_WIDTH-1:0] up_raddr,
-    input   [BUS_WIDTH*8-1:0]   up_rdata,
-    output                      up_wreq,
-    input                       up_wack,
-    output  [ADDRESS_WIDTH-1:0] up_waddr,
-    output  [BUS_WIDTH*8-1:0]   up_wdata
+    input                                           clk,
+    input                                           rst,
+    input  [ADDRESS_WIDTH-1:0]                      s_apb_paddr,
+    input  [0:0]                                    s_apb_psel,
+    input                                           s_apb_penable,
+    output                                          s_apb_pready,
+    input                                           s_apb_pwrite,
+    input  [BUS_WIDTH*8-1:0]                        s_apb_pwdata,
+    output [BUS_WIDTH*8-1:0]                        s_apb_prdata,
+    output                                          s_apb_pslverror,
+    output                                          up_rreq,
+    input                                           up_rack,
+    output  [ADDRESS_WIDTH-(ADDRESS_WIDTH/16)-1:0]  up_raddr,
+    input   [BUS_WIDTH*8-1:0]                       up_rdata,
+    output                                          up_wreq,
+    input                                           up_wack,
+    output  [ADDRESS_WIDTH-(ADDRESS_WIDTH/16)-1:0]  up_waddr,
+    output  [BUS_WIDTH*8-1:0]                       up_wdata
   );
+
+  localparam shift = ADDRESS_WIDTH/16;
 
   wire  valid;
 
@@ -101,11 +103,11 @@ module up_apb3 #(
 
   // var: up_waddr
   // up_waddr and s_apb_addr are a direct mapping.
-  assign up_waddr = s_apb_paddr;
+  assign up_waddr = s_apb_paddr[ADDRESS_WIDTH-1:shift];
 
   // var: up_waddr
   // up_raddr and s_apb_addr are a direct mapping.
-  assign up_raddr = s_apb_paddr;
+  assign up_raddr = s_apb_paddr[ADDRESS_WIDTH-1:shift];
 
   // var: up_wdata
   // up_wdata and s_apb_pwdata are a direct mapping.
