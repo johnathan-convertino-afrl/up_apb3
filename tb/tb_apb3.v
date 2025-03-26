@@ -31,7 +31,7 @@
 module tb_apb3 ();
   
   reg         tb_data_clk = 0;
-  reg         tb_rst = 0;
+  reg         tb_rstn = 0;
 
   //up registers
   reg                       r_up_rack;
@@ -82,7 +82,7 @@ module tb_apb3 ();
   ) dut (
     //clk reset
     .clk(tb_data_clk),
-    .rst(tb_rst),
+    .rstn(tb_rstn),
     //APB
     .s_apb_paddr(r_apb_paddr),
     .s_apb_psel(r_apb_psel),
@@ -116,11 +116,11 @@ module tb_apb3 ();
   //reset
   initial
   begin
-    tb_rst <= 1'b1;
+    tb_rstn <= 1'b1;
     
     #RST_PERIOD;
     
-    tb_rst <= 1'b0;
+    tb_rstn <= 1'b0;
   end
   
   //copy pasta, fst generation
@@ -133,7 +133,7 @@ module tb_apb3 ();
   //io apb3
   always @(posedge tb_data_clk)
   begin
-    if(tb_rst)
+    if(!tb_rstn)
     begin
       r_apb_pwrite  <= 1'b0;
       r_apb_penable <= 1'b0;
@@ -166,7 +166,7 @@ module tb_apb3 ();
   //up registers decoder
   always @(posedge tb_data_clk)
   begin
-    if(tb_rst)
+    if(!tb_rstn)
     begin
       r_up_rack   <= 1'b0;
       r_up_wack   <= 1'b0;

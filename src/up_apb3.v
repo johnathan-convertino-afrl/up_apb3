@@ -46,7 +46,7 @@
  * Ports:
  *
  *   clk              - Clock
- *   rst              - Positive reset
+ *   rstn             - negative reset
  *   s_apb_paddr      - APB3 address bus, up to 32 bits wide.
  *   s_apb_psel       - APB3 select per slave (1 for this core).
  *   s_apb_penable    - APB3 enable device for multiple transfers after first.
@@ -70,7 +70,7 @@ module up_apb3 #(
   ) 
   (
     input                                           clk,
-    input                                           rst,
+    input                                           rstn,
     input  [ADDRESS_WIDTH-1:0]                      s_apb_paddr,
     input  [0:0]                                    s_apb_psel,
     input                                           s_apb_penable,
@@ -81,21 +81,21 @@ module up_apb3 #(
     output                                          s_apb_pslverror,
     output                                          up_rreq,
     input                                           up_rack,
-    output  [ADDRESS_WIDTH-(ADDRESS_WIDTH/16)-1:0]  up_raddr,
+    output  [ADDRESS_WIDTH-(BUS_WIDTH/2)-1:0]       up_raddr,
     input   [BUS_WIDTH*8-1:0]                       up_rdata,
     output                                          up_wreq,
     input                                           up_wack,
-    output  [ADDRESS_WIDTH-(ADDRESS_WIDTH/16)-1:0]  up_waddr,
+    output  [ADDRESS_WIDTH-(BUS_WIDTH/2)-1:0]       up_waddr,
     output  [BUS_WIDTH*8-1:0]                       up_wdata
   );
 
-  localparam shift = ADDRESS_WIDTH/16;
+  localparam shift = BUS_WIDTH/2;
 
   wire  valid;
 
   // var: valid
   // This will add an extra clock cycle. since enable happens after select. both are needed to use the device.
-  assign valid = s_apb_psel & s_apb_penable;
+  assign valid = s_apb_psel & s_apb_penable & rstn;
 
   // var: s_apb_pslverror
   // APB3 error is always 0, no error.
@@ -127,5 +127,5 @@ module up_apb3 #(
 
   // var: s_apb_pready
   // Diagrams seem to indicate that we should indicate ready when not sel and enable, which is why valid is complimented.
-  assign s_apb_pready = up_wack | up_rack | ~valid;
+  assign s_apb_pready = (up_wack | up_rack | ~valid) & rstn;
 endmodule

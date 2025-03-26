@@ -50,6 +50,8 @@
 #### TB
 
 * tb_apb3.v
+* tb_cocotb.py
+* tb_cocotb.v
   
 ### FUSESOC
 
@@ -61,3 +63,4 @@
 * RUN WITH: (fusesoc run --target=sim VENDER:CORE:NAME:VERSION)
   - default (for IP integration builds)
   - sim
+  - sim_cocotb
