@@ -261,7 +261,7 @@ these locally use the following.cocotb
 
 Then you must use the cocotb sim target. The targets above can be run with various parameters.
 \begin{lstlisting}[language=bash]
-  $ fusesoc run sim_cocotb --target AFRL:bus:up_apb3:1.0.0
+  $ fusesoc run --target sim_cocotb AFRL:bus:up_apb3:1.0.0
 \end{lstlisting}
 
 \newpage
@@ -269,7 +269,6 @@ Then you must use the cocotb sim target. The targets above can be run with vario
 \section{Module Documentation} \label{Module Documentation}
 
 \par
-There is a single async module for this core.
 
 \begin{itemize}
 \item \textbf{up\_apb3} APB3 to uP converter\\
@@ -277,5 +276,5 @@ There is a single async module for this core.
 \item \textbf{tb\_cocotb-py} Cocotb python test routines\\
 \item \textbf{tb\_cocotb-v} Cocotb verilog test bench\\
 \end{itemize}
-The next sections document the module in great detail.
+The next sections document the module in detail.
 
