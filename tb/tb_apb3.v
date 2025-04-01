@@ -1,33 +1,44 @@
 //******************************************************************************
-/// @file    tb_wishbone_slave.v
-/// @author  JAY CONVERTINO
-/// @date    2021.06.23
-/// @brief   SIMPLE TEST BENCH
-///
-/// @LICENSE MIT
-///  Copyright 2021 Jay Convertino
-///
-///  Permission is hereby granted, free of charge, to any person obtaining a copy
-///  of this software and associated documentation files (the "Software"), to 
-///  deal in the Software without restriction, including without limitation the
-///  rights to use, copy, modify, merge, publish, distribute, sublicense, and/or 
-///  sell copies of the Software, and to permit persons to whom the Software is 
-///  furnished to do so, subject to the following conditions:
-///
-///  The above copyright notice and this permission notice shall be included in 
-///  all copies or substantial portions of the Software.
-///
-///  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR 
-///  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, 
-///  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-///  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER 
-///  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING 
-///  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
-///  IN THE SOFTWARE.
+// file:    tb_apb3.v
+//
+// author:  JAY CONVERTINO
+//
+// date:    2021/06/23
+//
+// about:   Brief
+// Test bench for abp3 slave
+//
+// license: License MIT
+// Copyright 2021 Jay Convertino
+//
+// Permission is hereby granted, free of charge, to any person obtaining a copy
+// of this software and associated documentation files (the "Software"), to
+// deal in the Software without restriction, including without limitation the
+// rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
+// sell copies of the Software, and to permit persons to whom the Software is
+// furnished to do so, subject to the following conditions:
+//
+// The above copyright notice and this permission notice shall be included in
+// all copies or substantial portions of the Software.
+//
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+// IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+// FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+// AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+// LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+// FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+// IN THE SOFTWARE.
+//
 //******************************************************************************
 
 `timescale 1 ns/10 ps
 
+/*
+ * Module: tb_apb3
+ *
+ * Test bench for apb3 slave. simple write and then read.
+ *
+ */
 module tb_apb3 ();
   
   reg         tb_data_clk = 0;
@@ -75,15 +86,19 @@ module tb_apb3 ();
   localparam STATUS_REG  = 14'h8;
   localparam CONTROL_REG = 14'hC;
 
-  //device under test
+  //Group: Instantiated Modules
+
+  /*
+   * Module: up_apb3
+   *
+   * Device under test, apb3 to uP
+   */
   up_apb3 #(
     .ADDRESS_WIDTH(16),
     .BUS_WIDTH(4)
   ) dut (
-    //clk reset
     .clk(tb_data_clk),
     .rstn(tb_rstn),
-    //APB
     .s_apb_paddr(r_apb_paddr),
     .s_apb_psel(r_apb_psel),
     .s_apb_penable(r_apb_penable),
@@ -92,13 +107,10 @@ module tb_apb3 ();
     .s_apb_pwdata(r_apb_pwdata),
     .s_apb_prdata(tb_apb_prdata),
     .s_apb_pslverror(tb_apb_perror),
-    //uP
-    //read interface
     .up_rreq(up_rreq),
     .up_rack(tb_rack),
     .up_raddr(up_raddr),
     .up_rdata(r_up_rdata),
-    //write interface
     .up_wreq(up_wreq),
     .up_wack(tb_wack),
     .up_waddr(up_waddr),

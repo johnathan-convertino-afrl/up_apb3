@@ -250,7 +250,7 @@ To use the cocotb tests you must install the following python libraries.
 \end{lstlisting}
 
 Each module has a cocotb based simulation. These use the cocotb extensions APB and uP. To install
-these locally use the following.
+these locally use the following.cocotb
 \begin{lstlisting}[language=bash]
   $ pip install --break-system-packages -e .
 \end{lstlisting}
@@ -273,6 +273,7 @@ There is a single async module for this core.
 
 \begin{itemize}
 \item \textbf{up\_apb3} APB3 to uP converter\\
+\item \textbf{tb\_apb3-v} Verilog test bench\\
 \item \textbf{tb\_cocotb-py} Cocotb python test routines\\
 \item \textbf{tb\_cocotb-v} Cocotb verilog test bench\\
 \end{itemize}
