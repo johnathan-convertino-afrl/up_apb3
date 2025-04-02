@@ -89,22 +89,22 @@
  <div class="CBody"><p>s_apb_prdata and up_rdata are a direct mapping.</p></div>
 </div>
 
-<a name="up_apb3.up_wreq"></a><a name="Topic17"></a><div class="CTopic TVariable LSystemVerilog">
+<a name="up_apb3.up_wreq"></a><a name="Topic58"></a><div class="CTopic TVariable LSystemVerilog">
  <div class="CTitle">up_wreq</div>
- <div id="NDPrototype17" class="NDPrototype"><div class="PSection PPlainSection"><span class="SHKeyword">assign</span> up_wreq = valid &amp; s_apb_pwrite</div></div>
+ <div id="NDPrototype58" class="NDPrototype"><div class="PSection PPlainSection"><span class="SHKeyword">assign</span> up_wreq = valid &amp; s_apb_pwrite &amp; r_cycle</div></div>
  <div class="CBody"><p>uP write request is a combination of the APB3 valid and APB3 write select (active high is write).</p></div>
 </div>
 
-<a name="up_apb3.up_rreq"></a><a name="Topic18"></a><div class="CTopic TVariable LSystemVerilog">
+<a name="up_apb3.up_rreq"></a><a name="Topic59"></a><div class="CTopic TVariable LSystemVerilog">
  <div class="CTitle">up_rreq</div>
- <div id="NDPrototype18" class="NDPrototype"><div class="PSection PPlainSection"><span class="SHKeyword">assign</span> up_rreq = valid &amp; ~s_apb_pwrite</div></div>
+ <div id="NDPrototype59" class="NDPrototype"><div class="PSection PPlainSection"><span class="SHKeyword">assign</span> up_rreq = valid &amp; ~s_apb_pwrite &amp; r_cycle</div></div>
  <div class="CBody"><p>uP read request is a combination of the APB3 valid and APB3 write select (active low is read).</p></div>
 </div>
 
-<a name="up_apb3.s_apb_pready"></a><a name="Topic50"></a><div class="CTopic TVariable LSystemVerilog last">
+<a name="up_apb3.s_apb_pready"></a><a name="Topic60"></a><div class="CTopic TVariable LSystemVerilog last">
  <div class="CTitle">s_apb_pready</div>
- <div id="NDPrototype50" class="NDPrototype WideForm"><div class="PSection PParameterSection CStyle"><div class="PParameterCells" data-WideColumnCount="6" data-NarrowColumnCount="5"><div class="PBeforeParameters" data-WideGridArea="1/1/2/2" data-NarrowGridArea="1/1/2/6" style="grid-area:1/1/2/2"><span class="SHKeyword">assign</span> s_apb_pready = (</div><div class="PModifierQualifier InFirstParameterColumn" data-WideGridArea="1/2/2/3" data-NarrowGridArea="2/1/3/2" style="grid-area:1/2/2/3">up_wack |&nbsp;</div><div class="PType" data-WideGridArea="1/3/2/4" data-NarrowGridArea="2/2/3/3" style="grid-area:1/3/2/4">up_rack |&nbsp;</div><div class="PSymbols" data-WideGridArea="1/4/2/5" data-NarrowGridArea="2/3/3/4" style="grid-area:1/4/2/5">~</div><div class="PName InLastParameterColumn" data-WideGridArea="1/5/2/6" data-NarrowGridArea="2/4/3/5" style="grid-area:1/5/2/6">valid</div><div class="PAfterParameters" data-WideGridArea="1/6/2/7" data-NarrowGridArea="3/1/4/6" style="grid-area:1/6/2/7">) &amp; rstn</div></div></div></div>
- <div class="CBody"><p>Diagrams seem to indicate that we should indicate ready when not sel and enable, which is why valid is complimented.</p></div>
+ <div id="NDPrototype60" class="NDPrototype WideForm"><div class="PSection PParameterSection CStyle"><div class="PParameterCells" data-WideColumnCount="4" data-NarrowColumnCount="3"><div class="PBeforeParameters" data-WideGridArea="1/1/2/2" data-NarrowGridArea="1/1/2/4" style="grid-area:1/1/2/2"><span class="SHKeyword">assign</span> s_apb_pready = (</div><div class="PType InFirstParameterColumn" data-WideGridArea="1/2/2/3" data-NarrowGridArea="2/1/3/2" style="grid-area:1/2/2/3">up_wack |&nbsp;</div><div class="PName InLastParameterColumn" data-WideGridArea="1/3/2/4" data-NarrowGridArea="2/2/3/3" style="grid-area:1/3/2/4">up_rack</div><div class="PAfterParameters" data-WideGridArea="1/4/2/5" data-NarrowGridArea="3/1/4/4" style="grid-area:1/4/2/5">) &amp; rstn</div></div></div></div>
+ <div class="CBody"><p>Ready is being treated like a awk</p></div>
 </div>
 
 </body></html>
