@@ -93,6 +93,8 @@ module up_apb3 #(
 
   wire  valid;
 
+  reg   r_cycle;
+
   // var: valid
   // This will add an extra clock cycle. since enable happens after select. both are needed to use the device.
   assign valid = s_apb_psel & s_apb_penable & rstn;
@@ -119,13 +121,28 @@ module up_apb3 #(
 
   // var: up_wreq
   // uP write request is a combination of the APB3 valid and APB3 write select (active high is write).
-  assign up_wreq = valid & s_apb_pwrite;
+  assign up_wreq = valid & s_apb_pwrite & r_cycle;
 
   // var: up_rreq
   // uP read request is a combination of the APB3 valid and APB3 write select (active low is read).
-  assign up_rreq = valid & ~s_apb_pwrite;
+  assign up_rreq = valid & ~s_apb_pwrite & r_cycle;
 
   // var: s_apb_pready
-  // Diagrams seem to indicate that we should indicate ready when not sel and enable, which is why valid is complimented.
-  assign s_apb_pready = (up_wack | up_rack | ~valid) & rstn;
+  // Ready is being treated like a awk
+  assign s_apb_pready = (up_wack | up_rack) & rstn;
+
+  always @(posedge clk)
+  begin
+    if(rstn == 1'b0)
+    begin
+      r_cycle <= 1'b1;
+    end else begin
+      r_cycle <= 1'b1;
+
+      if(valid == 1'b1)
+      begin
+        r_cycle <= 1'b0;
+      end
+    end
+  end
 endmodule
