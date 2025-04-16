@@ -159,30 +159,6 @@ The only module is the up\_apb3 module. It is listed below.
   \item \textbf{up\_apb3} Convert APB3 to the Analog Devices uP BUS. (see core for documentation).
 \end{itemize}
 
-\par\subsection{cocotb}
-\par
-To use the cocotb tests you must install the following python libraries.
-\begin{lstlisting}[language=bash]
-  $ pip install cocotb
-  $ pip install cocotbext-axi
-\end{lstlisting}
-
-Each module has a cocotb based simulation. These use the cocotb extensions made by Alex.
-The two extensions used are cocotbext-axi and cocotbext-uart. These provide outside verification
-of the implimentation. These tests consist of 3 different fusesoc targets.
-
-\begin{itemize}
-  \item \textbf{sim\_cocotb\_full} Standard simulation of TX/RX passing data to and from cocotbexts.
-  \item \textbf{sim\_cocotb\_rx} Simulation of data receive using cocotbext.
-  \item \textbf{sim\_cocotb\_tx} Simulation of data transmit using cocotbext.
-\end{itemize}
-
-Then you must use the cocotb sim target. The targets above can be run with various bus and fifo parameters.
-\begin{lstlisting}[language=bash]
-  $ fusesoc run --target AFRL:device_converter:axis_uart:1.0.0
-\end{lstlisting}
-This core only uses combinatoral methods to convert a few signals between the uP bus the APB3.
-
 Please see \ref{Module Documentation} for more information.
 
 \section{Building}

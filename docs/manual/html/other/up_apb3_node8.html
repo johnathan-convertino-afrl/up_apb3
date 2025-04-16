@@ -3,7 +3,7 @@
 <!--Converted with LaTeX2HTML 2024 (Released January 1, 2024) -->
 <HTML lang="en">
 <HEAD>
-<TITLE>cocotb</TITLE>
+<TITLE>Building</TITLE>
 
 <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=utf-8">
 <META NAME="viewport" CONTENT="width=device-width, initial-scale=1.0">
@@ -11,6 +11,7 @@
 
 <LINK REL="STYLESHEET" HREF="html.css">
 
+<LINK REL="next" HREF="up_apb3_node15.html">
 <LINK REL="previous" HREF="up_apb3_node7.html">
 <LINK REL="next" HREF="up_apb3_node9.html">
 </HEAD>
@@ -22,69 +23,61 @@
  HREF="up_apb3_node9.html">
 <IMG WIDTH="37" HEIGHT="24" ALT="next" SRC="next.png"></A> 
 <A
- HREF="up_apb3_node7.html">
+ HREF="html.html">
 <IMG WIDTH="26" HEIGHT="24" ALT="up" SRC="up.png"></A> 
 <A
  HREF="up_apb3_node7.html">
 <IMG WIDTH="63" HEIGHT="24" ALT="previous" SRC="prev.png"></A> 
-<A ID="tex2html64"
+<A ID="tex2html61"
   HREF="up_apb3_node1.html">
 <IMG WIDTH="65" HEIGHT="24" ALT="contents" SRC="contents.png"></A>  
 <BR>
 <B> Next:</B> <A
- HREF="up_apb3_node9.html">Building</A>
+ HREF="up_apb3_node9.html">fusesoc</A>
 <B> Up:</B> <A
- HREF="up_apb3_node7.html">Architecture</A>
+ HREF="html.html">html</A>
 <B> Previous:</B> <A
  HREF="up_apb3_node7.html">Architecture</A>
- &nbsp; <B>  <A ID="tex2html65"
+ &nbsp; <B>  <A ID="tex2html62"
   HREF="up_apb3_node1.html">Contents</A></B> 
 <BR>
 <BR></DIV>
 <!--End of Navigation Panel-->
 
-<H2><A ID="SECTION00031000000000000000">
-cocotb</A>
-</H2>
+<H1><A ID="SECTION00040000000000000000">
+Building</A>
+</H1>
 
 <P>
-To use the cocotb tests you must install the following python libraries.
-<TABLE FRAME="VOID" CELLPADDING="4"><TR><TD>
-<PRE>
-  $ pip install cocotb
-  $ pip install cocotbext-axi
-</PRE>
-</TD></TR></TABLE>
+The APB3 core is written in Verilog 2001. They should synthesize in any modern FPGA software. The core comes as a fusesoc packaged core and can be
+included in any other core. Be sure to make sure you have meet the dependencies listed in the previous section.
 
 <P>
-Each module has a cocotb based simulation. These use the cocotb extensions made by Alex.
-The two extensions used are cocotbext-axi and cocotbext-uart. These provide outside verification
-of the implimentation. These tests consist of 3 different fusesoc targets.
+<BR><HR>
+<!--Table of Child-Links-->
+<A ID="CHILD_LINKS"><STRONG>Subsections</STRONG></A>
 
-<P>
-
+<UL CLASS="ChildLinks">
+<LI><A ID="tex2html63"
+  HREF="up_apb3_node9.html">fusesoc</A>
+<LI><A ID="tex2html64"
+  HREF="up_apb3_node10.html">Source Files</A>
 <UL>
-<LI><SPAN  CLASS="textbf">sim_cocotb_full</SPAN> Standard simulation of TX/RX passing data to and from cocotbexts.
-</LI>
-<LI><SPAN  CLASS="textbf">sim_cocotb_rx</SPAN> Simulation of data receive using cocotbext.
-</LI>
-<LI><SPAN  CLASS="textbf">sim_cocotb_tx</SPAN> Simulation of data transmit using cocotbext.
-</LI>
+<LI><A ID="tex2html65"
+  HREF="up_apb3_node11.html">fusesoc_info File List</A>
 </UL>
-
-<P>
-Then you must use the cocotb sim target. The targets above can be run with various bus and fifo parameters.
-<TABLE FRAME="VOID" CELLPADDING="4"><TR><TD>
-<PRE>
-  $ fusesoc run --target AFRL:device_converter:axis_uart:1.0.0
-</PRE>
-</TD></TR></TABLE>
-This core only uses combinatoral methods to convert a few signals between the uP bus the APB3.
-
-<P>
-Please see <A HREF="up_apb3_node19.html#Module_Documentation"><IMG  ALT="[*]" SRC="crossref.png"></A> for more information.
-
-<P>
+<BR>
+<LI><A ID="tex2html66"
+  HREF="up_apb3_node12.html">Targets</A>
+<UL>
+<LI><A ID="tex2html67"
+  HREF="up_apb3_node13.html">fusesoc_info Targets</A>
+</UL>
+<BR>
+<LI><A ID="tex2html68"
+  HREF="up_apb3_node14.html">Directory Guide</A>
+</UL>
+<!--End of Table of Child-Links-->
 <BR><HR>
 
 </BODY>
