@@ -28,15 +28,6 @@
   - [up_apb3.pdf](docs/manual/up_apb3.pdf)
   - [github page](https://johnathan-convertino-afrl.github.io/up_apb3/)
 
-### DEPENDENCIES
-#### Build
-
-  - AFRL:utility:helper:1.0.0
-  
-#### Simulation
-
-  - AFRL:simulation:axis_stimulator
-
 ### PARAMETERS
 
 * ADDRESS_WIDTH : Bit width of the address bus.
@@ -62,5 +53,6 @@
 
 * RUN WITH: (fusesoc run --target=sim VENDER:CORE:NAME:VERSION)
   - default (for IP integration builds)
+  - lint
   - sim
   - sim_cocotb
