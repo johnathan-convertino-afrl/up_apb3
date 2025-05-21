@@ -5,14 +5,19 @@
 
 ---
 
-   author: Jay Convertino   
+  author: Jay Convertino   
+  
+  date: 2024.03.19
+  
+  details: Interface analog devices uP interface devices to APB3 bus
+  
+  license: MIT   
    
-   date: 2024.03.19
-   
-   details: Interface analog devices uP interface devices to APB3 bus
-   
-   license: MIT   
-   
+  Actions:  
+
+  [![Lint Status](../../actions/workflows/lint.yml/badge.svg)](../../actions)  
+  [![Manual Status](../../actions/workflows/manual.yml/badge.svg)](../../actions)  
+  
 ---
 
 ### Version

@@ -63,6 +63,7 @@
  *   up_wack          - uP bus write ack
  *   up_waddr         - uP bus write address
  *   up_wdata         - uP bus write data
+ *
  */
 module up_apb3 #(
     parameter ADDRESS_WIDTH = 16,
