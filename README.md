@@ -1,5 +1,6 @@
 # APB3 SLAVE
 ### APB3 slave to Analog Devices uP interface
+---
 
 ![image](docs/manual/img/AFRL.png)
 
